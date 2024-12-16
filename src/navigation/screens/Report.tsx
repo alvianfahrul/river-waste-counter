@@ -1,16 +1,24 @@
 import { Button, Text } from "@react-navigation/elements";
 import { StyleSheet, View, Image, Dimensions } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import warningOctagon from "../../assets/warning-octagon.png";
 
 const { width } = Dimensions.get("window");
 
 export function Report() {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Report</Text>
       <Image source={warningOctagon} style={[styles.image]} />
-      <Button style={styles.button}>Buat laporan baru</Button>
+      <Button
+        style={styles.button}
+        onPress={() => navigation.navigate("CreateReport")}
+      >
+        Buat laporan baru
+      </Button>
       <Button style={styles.button}>Lihat riwayat laporan anda</Button>
     </View>
   );

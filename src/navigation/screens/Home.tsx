@@ -40,7 +40,7 @@ export function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(process.env.EXPO_PUBLIC_API_URL);
+        const response = await axios.get(process.env.EXPO_PUBLIC_API_URL + "/predict/histories");
         setData(response.data.data);
       } catch (err) {
         setError((err as Error).message || "Terjadi kesalahan");

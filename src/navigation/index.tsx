@@ -15,6 +15,8 @@ import { Report } from "./screens/Report";
 import { Settings } from "./screens/Settings";
 import { Updates } from "./screens/Updates";
 import { NotFound } from "./screens/NotFound";
+import { CreateReport } from "./screens/CreateReport";
+import { FormReport } from "./screens/FormReport";
 
 const HomeTabs = createBottomTabNavigator({
   screens: {
@@ -67,6 +69,16 @@ const HomeTabs = createBottomTabNavigator({
   },
 });
 
+export type RootStackParamList = {
+  HomeTabs: undefined;
+  CreateReport: undefined;
+  FormReport: { image: any };
+  Profile: { user: string };
+  Settings: undefined;
+  NotFound: undefined;
+};
+
+
 const RootStack = createNativeStackNavigator({
   screens: {
     HomeTabs: {
@@ -75,6 +87,12 @@ const RootStack = createNativeStackNavigator({
         title: "Home",
         headerShown: false,
       },
+    },
+    CreateReport: {
+      screen: CreateReport,
+    },
+    FormReport: {
+      screen: FormReport,
     },
     Profile: {
       screen: Profile,
@@ -112,8 +130,6 @@ const RootStack = createNativeStackNavigator({
 });
 
 export const Navigation = createStaticNavigation(RootStack);
-
-type RootStackParamList = StaticParamList<typeof RootStack>;
 
 declare global {
   namespace ReactNavigation {
